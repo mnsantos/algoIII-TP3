@@ -22,7 +22,8 @@ int main()
         }
 	}
 	for(int i = 0;i<cantProblemas;i++){
-		problemas[i].g.mostrarGrafo(cout);
+		//problemas[i].g.mostrarGrafo(cout);
+		problemas[i].resolver();
 	}
     return 0;
 }

@@ -26,10 +26,14 @@ struct Grafo{
 
 struct Problema{
 	Problema (istream&);
-	void findCliques(vector<int>&,vector<int>&,vector<int>&);
+	void findCliques(vector<int>,vector<int>,vector<int>);
 	void resolver();
+	vector<int> interseccion(vector<int>&, int);
+	int frontera(vector<int>&);
 	
 	Grafo g;
+	vector<int> cliqueMaxFrontera;
+	int maxFrontera;
 };
 
 #endif
