@@ -1,0 +1,26 @@
+
+Para poder usar el graficador se requiere:
+-sudo apt-get install python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
+y luego:
+-instalar gnuplot-py: http://downloads.sourceforge.net/project/gnuplot-py/Gnuplot-py/1.8/gnuplot-py-1.8.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fgnuplot-py%2F%3Fsource%3Ddlp&ts=1378970252&use_mirror=ufpr
+
+(No es dificl de instalar, seguir los pasos del readme)
+
+//// Si se quiere hacer un gráfico normal: ////
+Comando:
+python graficador.py arg1 arg2 arg3 arg4
+en donde:
+arg1: archivo de entrada.
+agr2: archivo de salida.
+Opcionales:
+arg3: en caso de querer graficar con alguna funcion mas. Puede ser "cuadratica" o "nlogn".
+arg4: en caso de pasar el arg3, el arg4 toma una constante para graficar la funcion anterior.
+
+/// Si se quiere hacer un grafico de barras: ////
+Comando:
+python graficador.py b arg1 arg2 agr3
+arg1: archivo de entrada.
+agr2: archivo de salida.
+arg3: rango.
+
+
