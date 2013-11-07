@@ -1,8 +1,8 @@
-main.o: main.cpp ej3.cpp
-			g++ -o2 main.cpp ej3.cpp -o ej3
+main.o: main.cpp exacto.cpp
+			g++ -o2 main.cpp exacto.cpp -o exacto
 #			g++ -o2 tester.cpp ej3.cpp -o tester
 #			g++ -o2 generador.cpp -o gen
 clean:
-	rm -f ej3
+	rm -f exacto
 #	rm -f tester
 #	rm -f gen
