@@ -61,6 +61,14 @@ Problema::Problema(istream& is){
 	}
 }
 
+void Problema::mostrarResultado(ostream& os){
+	os<<maxFrontera<<" "<<cliqueMaxFrontera.size()<<" ";
+	for (int i=0;i<cliqueMaxFrontera.size();++i){
+		if (i==cliqueMaxFrontera.size()-1) os<<cliqueMaxFrontera[i]+1<<endl;
+		else os<<cliqueMaxFrontera[i]+1<<" ";
+	}
+}
+
 void Grafo::mostrarGrafo(ostream& os){
 	for (int i=0;i<cantNodos;++i){
 		for (int j=0;j<nodos[i].adyacentes.size();++j){
@@ -79,8 +87,6 @@ void Problema::resolver(){
 		P.push_back(i);
 	}
 	findCliques(R,P,X);
-	//mostrarVector(cliqueMaxFrontera);
-	cout <<maxFrontera<<endl;
 }
 
 int Problema::frontera(vector<int>& R){
@@ -97,10 +103,11 @@ int Problema::frontera(vector<int>& R){
 	return res;
 }
 
-void Problema::findCliques(vector<int> R, vector<int> P, vector<int> X){		
-	if (frontera(R)>maxFrontera){
+void Problema::findCliques(vector<int> R, vector<int> P, vector<int> X){
+	int front = frontera(R);		
+	if (front>maxFrontera){
 		cliqueMaxFrontera = R;
-		maxFrontera = frontera(R);
+		maxFrontera = front;
 	}
 	for (int i=0;i<P.size();++i){
 		findCliques(U(R,P[i]),interseccion(P,P[i]),interseccion(X,P[i]));

@@ -26,6 +26,7 @@ struct Grafo{
 
 struct Problema{
 	Problema (istream&);
+	void mostrarResultado(ostream& os);
 	void findCliques(vector<int>,vector<int>,vector<int>);
 	void resolver();
 	vector<int> interseccion(vector<int>&, int);
