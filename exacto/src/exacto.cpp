@@ -79,7 +79,7 @@ void Problema::resolver(){
 		P.push_back(i);
 	}
 	findCliques(R,P,X);
-	mostrarVector(cliqueMaxFrontera);
+	//mostrarVector(cliqueMaxFrontera);
 	cout <<maxFrontera<<endl;
 }
 
