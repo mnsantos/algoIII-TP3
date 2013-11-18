@@ -20,20 +20,19 @@ struct Nodo{
 struct Grafo{
 	vector<Nodo> nodos;
 	int cantNodos;	
-	
+
 	void mostrarGrafo(ostream&);	
 };
 
 struct Problema{
 	Problema (istream&);
 	void mostrarResultado(ostream& os);
-	void findCliques(vector<int>,vector<int>,vector<int>);
 	void resolver();
 	vector<int> interseccion(vector<int>&, int);
-	int frontera(vector<int>&);
+	int frontera(vector<Nodo>&);
 	
 	Grafo g;
-	vector<int> cliqueMaxFrontera;
+	vector<Nodo> cliqueMaxFrontera;
 	int maxFrontera;
 };
 
