@@ -27,13 +27,13 @@ struct Grafo{
 struct Problema{
 	Problema (istream&);
 	void mostrarResultado(ostream& os);
+	int mayorGrado(vector<int>&);
+	int cardinalFrontera(vector<int>&);
 	void resolver();
-	vector<int> interseccion(vector<int>&, int);
-	int frontera(vector<Nodo>&);
-	
+
 	Grafo g;
-	vector<Nodo> cliqueMaxFrontera;
-	int maxFrontera;
+	vector<int> cliqueMaxFrontera;
+	int tamFrontera;
 };
 
 #endif
