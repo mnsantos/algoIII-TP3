@@ -94,12 +94,12 @@ int Problema::frontera(vector<Nodo>& clique){
 
 
 /*
-//funcion golosa que resuelve el problema teoricamente
+//funcion golosa que resuelve el problema 
 */
 void Problema::resolver(){
 
 	cliqueMaxFrontera.push_back(mayorGrado(g.nodos));
-	int frontera = cliqueMaxFrontera[1].adyacentes.size();
+	maxFrontera = cliqueMaxFrontera[1].adyacentes.size();
 	
 	
 }

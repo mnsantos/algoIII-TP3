@@ -100,7 +100,11 @@ void Problema::resolver(){
 
 	cliqueMaxFrontera.push_back(mayorGrado(g.nodos));
 	maxFrontera = cliqueMaxFrontera[1].adyacentes.size();
+	bool aumenta = true;
+	while (aumenta){
+		
 	
 	
+	}
 }
 
