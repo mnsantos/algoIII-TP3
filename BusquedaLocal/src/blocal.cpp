@@ -92,23 +92,34 @@ vector<int> Problema::intersecar(vector<int> clique){
 vector<vector<int> > Problema::armar_vecindad (vector<int> clique){
 	vector<vector<int> > vecindad;
 	vector<int> aux;
+	vector<int> interseccion;
+	int nodo_sacado;
 	
 	if(clique.size()>1){
-		for(int i=0; i< clique.size(); i++){ //sacar un nodo
+		for(int i=0; i< clique.size(); i++){ //sacar un nodo y ademas intercambiar un nodo
 			aux= clique;
+			nodo_sacado= aux[i];
 			aux.erase(aux.begin()+i);
 			vecindad.push_back(aux);
+			
+			interseccion= intersecar(aux); //interseccion entre los adyacentes de los nodos de aux
+			if(interseccion.size()>0){
+				for(int i=0; i< interseccion.size(); i++){ //poner un nodo
+					if(interseccion[i] != nodo_sacado){
+						aux.push_back(interseccion[i]);
+						vecindad.push_back(aux);
+						aux.pop_back();
+					}
+				}
+			}
 		}
 	}
 	
-	vector<int> interseccion= intersecar(clique);
+	interseccion= intersecar(clique);
 	if(interseccion.size()>0){
 		for(int i=0; i< interseccion.size(); i++){ //poner un nodo
 			clique.push_back(interseccion[i]);
 			vecindad.push_back(clique);
-			
-			//mostrarVector(clique); /// :D
-			
 			clique.pop_back();
 		}
 	}
@@ -121,8 +132,6 @@ void Problema::resolver(){
 	cliqueMaxFrontera.push_back(0);
 	maxFrontera= g.nodos[0].adyacentes.size();
 	
-	//cout<< "ady nodo 0"<< maxFrontera; /// :D
-	
 	bool hay_cambio= true;
 	vector<vector<int> > vecindad;
 	
@@ -130,7 +139,13 @@ void Problema::resolver(){
 		vecindad= armar_vecindad(cliqueMaxFrontera);
 		hay_cambio= false;
 		
-		//cout<< "vecindad"<< vecindad.size(); /// :D
+		cout<< "el clique hasta ahora ";
+		mostrarVector(cliqueMaxFrontera);
+		
+		cout<< "iteracion "<< endl;
+		for(int i=0; i< vecindad.size(); i++){
+			mostrarVector(vecindad[i]);
+		}
 		
 		for(int i=0; i< vecindad.size(); i++){
 			int frontera_vecino= frontera(vecindad[i]); //para no calcularlo dos veces
