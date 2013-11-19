@@ -12,6 +12,8 @@ Problema::Problema(istream& is){
 	int e1,e2;
 	for (int i=0;i<m;++i){
 		is >> e1 >> e2;
+		g.nodos[e1-1].id = e1-1;
+		g.nodos[e2-1].id = e2-1;
 		g.nodos[e1-1].adyacentes.push_back(e2-1);
 		g.nodos[e2-1].adyacentes.push_back(e1-1);
 	}
@@ -58,6 +60,7 @@ int maxGrado(vector<Nodo>& vec){
 			aux = vec[i];
 		}
 	}
+	cout <<aux.id<<endl;
 	return aux.id;
 }
 
