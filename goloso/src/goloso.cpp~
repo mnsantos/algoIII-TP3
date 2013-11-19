@@ -12,6 +12,8 @@ Problema::Problema(istream& is){
 	int e1,e2;
 	for (int i=0;i<m;++i){
 		is >> e1 >> e2;
+		g.nodos[e1-1].id = e1-1;
+		g.nodos[e2-1].id = e2-1;
 		g.nodos[e1-1].adyacentes.push_back(e2-1);
 		g.nodos[e2-1].adyacentes.push_back(e1-1);
 	}
@@ -97,34 +99,28 @@ int Problema::cardinalFrontera(vector<int>& clique){
 /*
 //diferencia simetrica entre dos vectores en O(n²)
 */
-vector<int> difSimetrica(vector<int>& a, vector<int>& b){
+vector<int> Intersec(vector<int>& a, vector<int>& b){
 	vector<int> res;
-	bool agrega = true;
 	for(int i = 0; i < a.size(); i++){
-		for(int j = 0; i < b.size(); j++){
-			if(a[i] == b[j]){agrega = false;}
+		for(int j = 0; j < b.size(); j++){
+			if(a[i] == b[j]){res.push_back(a[i])}
 		}
-		if(agrega){res.push_back(a[i]);}
-		agrega = true;
 	}
-
-	/*for(int i = 0; i < b.size(); i++){
-		for(int j = 0; i < a.size(); j++){
-			if(b[i] == a[j]){agrega = false;}
-		}
-		if(agrega){res.push_back(b[i]);}
-		agrega = true;
-	}*/
-	return res;
+	return res;		
 }
 
 
 
 /*
-//calcula los ids de los nodos frontera que pueden agrandar la clique en O(n³)
+//calcula los ids de los nodos frontera que pueden agrandar la clique en O(n²)
 */
-void Problema::nodosCandidato(vector<int>& frontera, vector<int>& clique){
-	frontera = difSimetrica(frontera, g.nodos[clique[clique.size()-1]].adyacentes);
+vector<int> Problema::nodosCandidato(vector<int>& clique){
+	vector<int> res = g.nodos[clique[0]].adyacentes;
+	for(int i = 1; i < clique.size(); i++){
+		res = Intersec(res, g.nodos[clique[i]].adyacentes);
+	}
+
+	return res;
 }		
 
 
@@ -135,10 +131,9 @@ void Problema::nodosCandidato(vector<int>& frontera, vector<int>& clique){
 void Problema::resolver(){
 	cliqueMaxFrontera.push_back(maxGrado(g.nodos));
 	tamFrontera = cardinalFrontera(cliqueMaxFrontera);
-	vector<int> frontera = g.nodos[cliqueMaxFrontera[0]].adyacentes;
 	bool aumenta = true;
 	while (aumenta){
-		int candidato = mayorGrado(frontera);
+		int candidato = mayorGrado(nodosCandidato(cliqueMaxFrontera));
 		if(candidato == -1){ aumenta = false; break;}
 		vector<int>cliqueAux = cliqueMaxFrontera;
 		cliqueAux.push_back(candidato);
