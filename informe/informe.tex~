@@ -131,9 +131,11 @@
 
 %\newpage
 
-%\section{Algoritmo_Goloso}
+\section{Algoritmo Goloso}
+\input{goloso\goloso.tex}
 
-%\input{ej2/1/codigo_relevante.tex}
+%\section{Algoritmo_Busqueda_Local}
+%\input{}
 %\newpage
 
 \end{document}
