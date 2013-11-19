@@ -23,7 +23,7 @@ Problema::Problema(istream& is){
 //muestra los resultados del problema
 */
 void Problema::mostrarResultado(ostream& os){
-	os << tamFrontera << " " << cliqueMaxFrontera.size() << " " ;
+	os << tamFrontera << " " << cliqueMaxFrontera.size() << endl ;
 	for (int i = 0; i < cliqueMaxFrontera.size(); i++){
 		if (i == cliqueMaxFrontera.size()-1){
 			os << cliqueMaxFrontera[i] + 1 <<endl;
@@ -95,48 +95,9 @@ int Problema::cardinalFrontera(vector<int>& clique){
 
 
 /*
-//diferencia simetrica entre dos vectores en O(n²)
-*/
-vector<int> dif_simet(vector<int>& a, vector<int>& b){
-	vector<int> res;
-	bool agregar = true;
-	for(int i = 0; i < a.size(); i++){
-		for(int j = 0; j < b.size(); j++){
-			if(a[i] == b[j]){ agregar = false;}
-		}
-		if(agregar){res.push_back(a[i]);}
-		agregar = true;
-	}
-	for(int i = 0; i < b.size(); i++){
-		for(int j = 0; j < a.size(); j++){
-			if(a[i] == b[j]){ agregar = false;}
-		}
-		if(agregar){res.push_back(b[i]);}
-		agregar = true;
-	}
-
-	return res;
-}
-
-
-
-/*
-//devuelve los ids de los nodos de la frontera
-*/
-vector<int> actualizar(vector<int>& frontera, vector<int>& clique, vector<int>& agregados){
-	vector<int> vecinos = dif_simet(clique, agregados);
-	vecinos = dif_simet(vecinos, frontera);
-
-	return vecinos;
-}
-
-
-
-/*
 //funcion golosa que resuelve el problema 
 */
 void Problema::resolver(){
-
 	cliqueMaxFrontera.push_back(maxGrado(g.nodos));
 	tamFrontera = cardinalFrontera(cliqueMaxFrontera);
 	bool aumenta = true;
@@ -144,8 +105,9 @@ void Problema::resolver(){
 	while (aumenta){
 		int candidato = mayorGrado(fronteraAux);
 		if(candidato == -1){ aumenta = false; break;}
-		actualizar(fronteraAux, cliqueMaxFrontera, g.nodos[candidato].adyacentes);
-		if(tamFrontera < fronteraAux.size()){
+		vector<int>cliqueAux = cliqueMaxFrontera;
+		cliqueAux.push_back(candidato);
+		if(tamFrontera < cardinalFrontera(cliqueAux)){
 			cliqueMaxFrontera.push_back(candidato);
 			tamFrontera = cardinalFrontera(cliqueMaxFrontera);
 		}else{
