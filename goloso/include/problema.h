@@ -29,7 +29,7 @@ struct Problema{
 	void mostrarResultado(ostream& os);
 	int mayorGrado(vector<int>);
 	int cardinalFrontera(vector<int>&);
-	vector<int> frontera(vector<int>&);
+	void nodosCandidato(vector<int>&, vector<int>&);
 	void resolver();
 
 	Grafo g;

@@ -23,7 +23,7 @@ Problema::Problema(istream& is){
 //muestra los resultados del problema
 */
 void Problema::mostrarResultado(ostream& os){
-	os << tamFrontera << " " << cliqueMaxFrontera.size() <<" ";
+	os << tamFrontera << " " << cliqueMaxFrontera.size() <<" "<<endl;
 	for (int i = 0; i < cliqueMaxFrontera.size(); i++){
 		if (i == cliqueMaxFrontera.size()-1){
 			os << cliqueMaxFrontera[i] + 1 <<endl;
@@ -52,7 +52,7 @@ void Grafo::mostrarGrafo(ostream& os){
 */
 int maxGrado(vector<Nodo>& vec){
 	if(vec.size() == 0) {return -1;}
-	Nodo aux = vec[1];
+	Nodo aux = vec[0];
 	for(int i = 0; i < vec.size(); i++){
 		if(aux.adyacentes.size() < vec[i].adyacentes.size()){
 			aux = vec[i];
@@ -68,7 +68,7 @@ int maxGrado(vector<Nodo>& vec){
 */
 int Problema::mayorGrado(vector<int> vec){
 	if (vec.size() == 0) {return -1;}
-	int aux = vec[1];
+	int aux = vec[0];
 	for(int i = 0; i < vec.size(); i++){
 		if(g.nodos[aux].adyacentes.size() < g.nodos[vec[i]].adyacentes.size()){
 			aux = vec[i];
@@ -95,22 +95,37 @@ int Problema::cardinalFrontera(vector<int>& clique){
 
 
 /*
-//calcula los ids de los nodos frontera de una clique en O(n³)
+//diferencia simetrica entre dos vectores en O(n²)
 */
-vector<int> Problema::frontera(vector<int>& clique){
+vector<int> difSimetrica(vector<int>& a, vector<int>& b){
 	vector<int> res;
-	for(int i = 0; i < clique.size(); i++){
-		for(int j = 0; j < g.nodos[clique[i]].adyacentes.size(); j++){
-			int k = 0;
-			while(k < clique.size()){
-				if(g.nodos[clique[i]].adyacentes[j] =! clique[k])
-				res.push_back(g.nodos[clique[i]].adyacentes[j]);
-				k++;
-			}
+	bool agrega = true;
+	for(int i = 0; i < a.size(); i++){
+		for(int j = 0; i < b.size(); j++){
+			if(a[i] == b[j]){agrega = false;}
 		}
+		if(agrega){res.push_back(a[i]);}
+		agrega = true;
+	}
+
+	for(int i = 0; i < b.size(); i++){
+		for(int j = 0; i < a.size(); j++){
+			if(b[i] == a[j]){agrega = false;}
+		}
+		if(agrega){res.push_back(b[i]);}
+		agrega = true;
 	}
 	return res;
 }
+
+
+
+/*
+//calcula los ids de los nodos frontera que pueden agrandar la clique en O(n³)
+*/
+void Problema::nodosCandidato(vector<int>& frontera, vector<int>& clique){
+	frontera = difSimetrica(frontera, g.nodos[clique[clique.size()-1]].adyacentes);
+}		
 
 
 
@@ -120,18 +135,17 @@ vector<int> Problema::frontera(vector<int>& clique){
 void Problema::resolver(){
 	cliqueMaxFrontera.push_back(maxGrado(g.nodos));
 	tamFrontera = cardinalFrontera(cliqueMaxFrontera);
+	vector<int> frontera = g.nodos[cliqueMaxFrontera[0]].adyacentes;
 	bool aumenta = true;
 	while (aumenta){
-		int candidato = mayorGrado(frontera(cliqueMaxFrontera/*fronteraAux*/));
-		//cout << "la frontera es";
-		//for(int i = 0; i < frontera(cliqueMaxFrontera).size(); i++){cout <<frontera(cliqueMaxFrontera)[i]<<" ";}
-		//cout << endl;
+		int candidato = mayorGrado(frontera);
 		if(candidato == -1){ aumenta = false; break;}
 		vector<int>cliqueAux = cliqueMaxFrontera;
 		cliqueAux.push_back(candidato);
 		if(tamFrontera < cardinalFrontera(cliqueAux)){
 			cliqueMaxFrontera.push_back(candidato);
 			tamFrontera = cardinalFrontera(cliqueMaxFrontera);
+			nodosCandidato(frontera,cliqueMaxFrontera);
 		}else{
 			aumenta = false;
 			
