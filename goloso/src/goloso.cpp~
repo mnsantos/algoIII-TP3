@@ -64,9 +64,9 @@ int maxGrado(vector<Nodo>& vec){
 
 
 /*
-//obtiene nodo de mayor grado de una frontera en O(n)
+//obtiene nodo de mayor grado de un vector de ints en O(n)
 */
-int Problema::mayorGrado(vector<int>& vec){
+int Problema::mayorGrado(vector<int> vec){
 	if (vec.size() == 0) {return -1;}
 	int aux = vec[1];
 	for(int i = 0; i < vec.size(); i++){
@@ -95,43 +95,21 @@ int Problema::cardinalFrontera(vector<int>& clique){
 
 
 /*
-//diferencia simetrica entre dos vectores en O(n²)
-
-vector<int> dif_simet(vector<int>& a, vector<int>& b){
+//calcula los ids de los nodos frontera de una clique en O(n³)
+*/
+vector<int> Problema::frontera(vector<int>& clique){
 	vector<int> res;
-	bool agregar = true;
-	for(int i = 0; i < a.size(); i++){
-		for(int j = 0; j < b.size(); j++){
-			if(a[i] == b[j]){ agregar = false;}
+	for(int i = 0; i < clique.size(); i++){
+		for(int j = 0; j < g.nodos[clique[i]].adyacentes.size(); j++){
+			for(int k = 0; k < clique.size();k++){
+				if(g.nodos[clique[i]].adyacentes[j] =! clique[i])
+				res.push_back(g.nodos[clique[i]].adyacentes[j]);
+			}
 		}
-		if(agregar){res.push_back(a[i]);}
-		agregar = true;
 	}
-	for(int i = 0; i < b.size(); i++){
-		for(int j = 0; j < a.size(); j++){
-			if(a[i] == b[j]){ agregar = false;}
-		}
-		if(agregar){res.push_back(b[i]);}
-		agregar = true;
-	}
-
 	return res;
 }
 
-
-
-
-//devuelve los ids de los nodos de la frontera
-
-vector<int> actualizar(vector<int>& frontera, vector<int>& clique, vector<int>& agregados, int cndt){
-	vector<int> vecinos;
-	vecinos.push_back(cndt);
-	vecinos = dif_simet(vecinos, clique);
-	vecinos = dif_simet(vecinos, );
-
-	return vecinos;
-}
-*/
 
 
 /*
@@ -141,9 +119,11 @@ void Problema::resolver(){
 	cliqueMaxFrontera.push_back(maxGrado(g.nodos));
 	tamFrontera = cardinalFrontera(cliqueMaxFrontera);
 	bool aumenta = true;
-	vector<int> fronteraAux = g.nodos[cliqueMaxFrontera[0]].adyacentes;
 	while (aumenta){
-		int candidato = mayorGrado(fronteraAux);
+		int candidato = mayorGrado(frontera(cliqueMaxFrontera/*fronteraAux*/));
+		//cout << "la frontera es";
+		//for(int i = 0; i < frontera(cliqueMaxFrontera).size(); i++){cout <<frontera(cliqueMaxFrontera)[i]<<" ";}
+		//cout << endl;
 		if(candidato == -1){ aumenta = false; break;}
 		vector<int>cliqueAux = cliqueMaxFrontera;
 		cliqueAux.push_back(candidato);

@@ -64,9 +64,9 @@ int maxGrado(vector<Nodo>& vec){
 
 
 /*
-//obtiene nodo de mayor grado de una frontera en O(n)
+//obtiene nodo de mayor grado de un vector de ints en O(n)
 */
-int Problema::mayorGrado(vector<int>& vec){
+int Problema::mayorGrado(vector<int> vec){
 	if (vec.size() == 0) {return -1;}
 	int aux = vec[1];
 	for(int i = 0; i < vec.size(); i++){
@@ -95,15 +95,37 @@ int Problema::cardinalFrontera(vector<int>& clique){
 
 
 /*
+//calcula los ids de los nodos frontera de una clique en O(n³)
+*/
+vector<int> Problema::frontera(vector<int>& clique){
+	vector<int> res;
+	for(int i = 0; i < clique.size(); i++){
+		for(int j = 0; j < g.nodos[clique[i]].adyacentes.size(); j++){
+			int k = 0;
+			while(k < clique.size()){
+				if(g.nodos[clique[i]].adyacentes[j] =! clique[k])
+				res.push_back(g.nodos[clique[i]].adyacentes[j]);
+				k++;
+			}
+		}
+	}
+	return res;
+}
+
+
+
+/*
 //funcion golosa que resuelve el problema 
 */
 void Problema::resolver(){
 	cliqueMaxFrontera.push_back(maxGrado(g.nodos));
 	tamFrontera = cardinalFrontera(cliqueMaxFrontera);
 	bool aumenta = true;
-	vector<int> fronteraAux = g.nodos[cliqueMaxFrontera[0]].adyacentes;
 	while (aumenta){
-		int candidato = mayorGrado(fronteraAux);
+		int candidato = mayorGrado(frontera(cliqueMaxFrontera/*fronteraAux*/));
+		//cout << "la frontera es";
+		//for(int i = 0; i < frontera(cliqueMaxFrontera).size(); i++){cout <<frontera(cliqueMaxFrontera)[i]<<" ";}
+		//cout << endl;
 		if(candidato == -1){ aumenta = false; break;}
 		vector<int>cliqueAux = cliqueMaxFrontera;
 		cliqueAux.push_back(candidato);

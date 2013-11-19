@@ -27,8 +27,9 @@ struct Grafo{
 struct Problema{
 	Problema (istream&);
 	void mostrarResultado(ostream& os);
-	int mayorGrado(vector<int>&);
+	int mayorGrado(vector<int>);
 	int cardinalFrontera(vector<int>&);
+	vector<int> frontera(vector<int>&);
 	void resolver();
 
 	Grafo g;
