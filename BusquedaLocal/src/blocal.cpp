@@ -138,14 +138,14 @@ void Problema::resolver(){
 	while(hay_cambio){
 		vecindad= armar_vecindad(cliqueMaxFrontera);
 		hay_cambio= false;
-		
+		/*
 		cout<< "el clique hasta ahora ";
 		mostrarVector(cliqueMaxFrontera);
 		
 		cout<< "iteracion "<< endl;
 		for(int i=0; i< vecindad.size(); i++){
 			mostrarVector(vecindad[i]);
-		}
+		}*/
 		
 		for(int i=0; i< vecindad.size(); i++){
 			int frontera_vecino= frontera(vecindad[i]); //para no calcularlo dos veces

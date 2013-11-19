@@ -7,7 +7,7 @@ prueba = str(sys.argv[2]) #test
 
 if (algoritmo=="local"):
 	algoritmo="BusquedaLocal/src"
-	ejecutable="local"
+	ejecutable="blocal"
 if(algoritmo=="exacto"):
 	algoritmo="exacto/src"
 	ejecutable="exacto"
