@@ -29,12 +29,18 @@ for files in glob.glob("*.in"):
 	array = open("log.txt", 'r').readline()
 	array = array.split()
 	frontera = int(array[0])
-	files = files[:-2]+"out"
+	if (prueba=="tests3"):
+		files = files+".out"
+	else:
+		files = files[:-2]+"out"
 	os.chdir("../../tests/"+prueba)
 	array = open(files, 'r').readline()
 	array = array.split()
 	test = int(array[0])
-	files = files[8:10]
+	if (prueba=="tests3"):
+		files = files[10:12]
+	else:
+		files = files[8:10]
 	if (files[1]=="."):
 		files = files[0]
 	if (frontera!=test):
