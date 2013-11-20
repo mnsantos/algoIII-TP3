@@ -1,5 +1,5 @@
 #include "../include/problema.h"
-
+#include <stdlib.h>
 using namespace std;
 
 void mostrarVector(const vector<int>& a){
@@ -129,8 +129,10 @@ vector<vector<int> > Problema::armar_vecindad (vector<int> clique){
 
 
 void Problema::resolver(){
-	cliqueMaxFrontera.push_back(0);
-	maxFrontera= g.nodos[0].adyacentes.size();
+	srand (time(NULL)); //random seed
+	int nodo= rand() % g.cantNodos;
+	cliqueMaxFrontera.push_back(nodo);
+	maxFrontera= g.nodos[nodo].adyacentes.size();
 	
 	bool hay_cambio= true;
 	vector<vector<int> > vecindad;
