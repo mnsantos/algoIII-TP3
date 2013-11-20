@@ -105,7 +105,7 @@ int Problema::frontera(vector<int>& R){
 
 void Problema::findCliques(vector<int> R, vector<int> P, vector<int> X){
 	int front = frontera(R);		
-	if (front>maxFrontera){
+	if (front>=maxFrontera){
 		cliqueMaxFrontera = R;
 		maxFrontera = front;
 	}
