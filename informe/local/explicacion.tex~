@@ -1,0 +1,14 @@
+Para desarrollar el algoritmo de Búsqueda local, necesitamos definir dos cosas. Una es la "vecindad" y la otra cual será nuestra solución inicial.
+Consideramos que una clique es vecina de otra si difieren exactamente en un nodo, es decir puede tener un nodo más, un nodo menos o uno distinto (con el mismo número de nodos).
+La solución inicial es un nodo elegido al azar.
+En cada iteración creamos la vecindad de la clique de máxima frontera (CMF) hasta el momento, recorremos sus vecinos y en caso de que tenga mayor frontera que la CMF hasta el momento, ésta pasa a ser la nueva CMF.
+
+Otras vecindades que tuvimos en cuenta fueron:
+-Cliques de igual o diferencia de uno en tamaño.
+-La clique de mayor tamaño que contenga a todos los nodos que forman parte de la solución en ese momento. La consideramos junto con la definición de vecindad que terminamos implementando.
+
+Las descartamos porque los algoritmos para encontrar estas cliques vecinas implican una complejidad muy alta, y el proceso para hacerlo no resulta tan directo como el que elegimos, que si bien puede llegar a evaluar un gran número de posibilidades, está muy relacionado con el grado de los nodos y cantidad que tengamos en la solución, ya que si agregamos un nodo será uno de la frontera, si sacamos será uno de la solución que teníamos y si intercambia será de uno de la solución con uno de la frontera.
+
+
+
+
