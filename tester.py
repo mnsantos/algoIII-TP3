@@ -29,7 +29,7 @@ for files in glob.glob("*.in"):
 	array = open("log.txt", 'r').readline()
 	array = array.split()
 	frontera = int(array[0])
-	if (prueba=="tests3"):
+	if (prueba=="tests3" or prueba=="casos"):
 		files = files+".out"
 	else:
 		files = files[:-2]+"out"
