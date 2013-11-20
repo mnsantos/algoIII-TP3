@@ -97,7 +97,7 @@ int Problema::cardinalFrontera(vector<int>& clique){
 
 
 /*
-//diferencia simetrica entre dos vectores en O(n²)
+//interseccion entre dos vectores en O(n²)
 */
 vector<int> Intersec(vector<int>& a, vector<int>& b){
 	vector<int> res;
@@ -112,7 +112,7 @@ vector<int> Intersec(vector<int>& a, vector<int>& b){
 
 
 /*
-//calcula los ids de los nodos frontera que pueden agrandar la clique en O(n²)
+//calcula los ids de los nodos frontera que pueden agrandar la clique en O(n³)
 */
 vector<int> Problema::nodosCandidato(vector<int>& clique){
 	vector<int> res = g.nodos[clique[0]].adyacentes;
@@ -126,7 +126,7 @@ vector<int> Problema::nodosCandidato(vector<int>& clique){
 
 
 /*
-//funcion golosa que resuelve el problema 
+//funcion golosa que resuelve el problema O(n)
 */
 void Problema::resolver(){
 	cliqueMaxFrontera.push_back(maxGrado(g.nodos));
