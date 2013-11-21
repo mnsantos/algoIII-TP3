@@ -23,12 +23,12 @@ bool esta(vector<vector<int> > & aristas, vector<int> a){
 
 int main()
 {
-	srand (time(NULL));
 	
 	int nodoMax;
 	cin>> nodoMax;
 		
 	for(int n= 3; n< nodoMax; n++){
+		srand (time(NULL));	
 		int cant_max_aristas= (n*(n-1))/2;
 		int m;
 		

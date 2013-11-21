@@ -78,4 +78,4 @@ ax.set_xticks(ind)
 group_labels = ['Exacto', 'Goloso', 'B. Local', 'Tabu']
 ax.set_xticklabels(group_labels)
 fig.autofmt_xdate()
-p.show()
+savefig("bar.jpg")
