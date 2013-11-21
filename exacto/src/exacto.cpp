@@ -91,6 +91,15 @@ void Problema::resolver(){
 
 int Problema::frontera(vector<int>& R){
 	int res=0;
+	int tam=R.size();
+	for (int i=0;i<R.size();++i){
+		res+=g.nodos[R[i]].adyacentes.size();
+	}
+	res = res - (tam*(tam-1));
+	return res;
+	
+	/*
+	int res=0;
 	for (int i=0;i<R.size();++i){
 		for (int j=0;j<g.nodos[R[i]].adyacentes.size();++j){
 			int h=0;
@@ -101,6 +110,7 @@ int Problema::frontera(vector<int>& R){
 		}
 	}
 	return res;
+	*/
 }
 
 void Problema::findCliques(vector<int> R, vector<int> P, vector<int> X){

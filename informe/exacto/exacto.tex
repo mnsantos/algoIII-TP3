@@ -14,8 +14,10 @@ La recursión se inicia seteando a R y a X como conjuntos vacíos y a P como el 
 		\State maxFrontera $\shortleftarrow$ front
 	\EndIf
 	\ForAll{$p\ vertice \in\ P$}
-		\State findCliques(R $\cup$ $\{v\}$, P $\cap$ N(v), X $\cap$ N(v))
+		\State findCliques(R $\cup$ $\{v\}$, P $\cap$ N($v$), X $\cap$ N($v$))
 	\EndFor
+	\State P $\backslash$ $\{v\}$
+	\State X $\cup$ $v$
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
@@ -63,4 +65,65 @@ Algunas aclaraciones:
     \end{tabular}
 \captionof{table}{Seguimiento del algoritmo. Solución devuelta: $\{$2,3$\}$, frontera: 4.}
 \end{center}
+
+Notar que en el seguimiento mostrado el algoritmo evalúa todas las cliques posibles del grafo y sólo lo hace una vez por cada una de ellas. Esto ocurre gracias a la presencia de los conjuntos P y X.
+
+\subsection{Complejidad}
+
+Sea $G$ un grafo y $|C|$ la cantidad de cliques de $G$ podemos afirmar que el algoritmo exacto presentado tiene una complejidad lineal relativa a la cantidad de cliques presentes en $G$, es decir, $|C|$. Decimos que es linear ya que como fue mostrado en la sección 1.1.1, el algoritmo procesa todas las cliques presentes en $G$ y sólo lo hace una vez por cada una de ellas.
+
+Podemos, entonces, asegurar que el número total de llamadas recursivas que hace el algoritmo es $|C|$. Suponiendo que en cada llamada recursiva tenemos un costo de $O(L)$, la complejidad total del algoritmo será $O(L.|C|)$. Resta analizar cuánto es $O(L)$ y $|C|$.
+
+Para analizar $O(L)$ observemos el pseudocódigo del algoritmo:
+
+n = cantidad de nodos en el grafo.
+
+\begin{algorithm}[H]
+\caption{findCliques}\label{ej1}
+\begin{algorithmic}[1]
+\Procedure{findCliques}{$R,P,X$}
+	\State int $front$ $\shortleftarrow$ frontera(R) \comp{n}
+	\If {front $>$ maxFrontera}
+		\State cliqueMaxFrontera $\shortleftarrow$ R \comp{n}
+		\State maxFrontera $\shortleftarrow$ front \comp{1}
+	\EndIf
+	\ForAll{$p\ vertice \in\ P$}
+		\State findCliques(R $\cup$ $\{v\}$, P $\cap$ N($v$), X $\cap$ N($v$)) \Comment{complejidad analizada para la unión e intersección} \comp{n+n^2+n^2}
+	\EndFor
+	\State P $\backslash$ $\{v\}$ \comp{n}
+	\State X $\cup$ $v$ \comp{n}
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{frontera}\label{ej1}
+\begin{algorithmic}[1]
+\Procedure{frontera}{$R$}
+	\State int $res$ $\shortleftarrow$ 0 \comp{1}
+	\State int $tam$ $\shortleftarrow$ $|R|$ \comp{1}
+	\ForAll{$n\ vertice \in\ R$} \comp{n}
+		\State $res$ $\shortleftarrow$ $res \ + \ adyacentes(n)$ \comp{1}
+	\EndFor
+	\State $res \ (tam*(tam-1))$ \comp{1}
+	\State return $res$ \comp{1}
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\begin{itemize}
+ \item frontera(R) es $O(n)$.
+ \item R $\cup$ $\{v\}$ es $O(n)$ ya que el conjunto tiene a lo sumo n elementos y para verificar que $v$ no se encuentre en el conjunto hay que recorrerlo todo.
+ \item P $\cap$ N($v$) es $O(n^2)$ ya que los dos conjuntos a intersecar tienen a lo sumo n elementos y por cada elemento en el primer conjunto debe recorrerse el segundo conjunto para verificar si el elemento se encuentra en él.
+\end{itemize}
+
+Por lo tanto $O(L)$ = $O(n^2)$. Veamos cuánto es $|C|$.
+
+% No estoy seguro de lo que voy a poner abajo. De hecho dudo de que sea cierto. Verificar
+
+Llegamos a la conclusión de que un grafo de n vértices tiene a lo sumo $2^n$ cliques que es equivalente a la cardinalidad del conjunto de partes de un conjunto de n elementos. ¿Por qué decimos esto? Porque para nosotros un $K_n$ es un grafo cuya cantidad de cliques es máximo para un grafo de n elementos por el hecho de que cualquier subconjunto de $K_n$ es una clique posible ya que todos los nodos se encuentran interconectados.
+
+En definitiva, la complejidad total del algoritmo es: $O(n^2*2^n)$.
+
+
 
