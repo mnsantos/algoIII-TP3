@@ -53,15 +53,23 @@ ys.append(y)
 #	y.append(float(line[0]))
 #fo.close()
 #ys.append(y)
-	
-e=sum(ys[0])/len(ys[0])
-g=sum(ys[1])/len(ys[1])
-bl=sum(ys[2])/len(ys[2])
+
+g=0
+bl=0
+#t=0
+
+for i in range(0,len(ys[0])):
+	g=g+ys[1][i]/ys[0][i]
+	bl=bl+ys[2][i]/ys[0][i]
+
+
+g=g/len(ys[0])
+bl=bl/len(ys[0])
 #t=sum(ys[0])/len(ys[0])
 
 pe=100
-pg=(g/e)*100
-pbl=(bl/e)*100
+pg=g*100
+pbl=bl*100
 #pg=(t/e)*100
 
 fig = p.figure()
@@ -78,4 +86,4 @@ ax.set_xticks(ind)
 group_labels = ['Exacto', 'Goloso', 'B. Local', 'Tabu']
 ax.set_xticklabels(group_labels)
 fig.autofmt_xdate()
-savefig("bar.jpg")
+p.savefig("efectividad.jpg")

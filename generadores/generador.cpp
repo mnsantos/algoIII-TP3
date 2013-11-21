@@ -27,12 +27,12 @@ int main()
 	int nodoMax;
 	cin>> nodoMax;
 		
-	for(int n= 3; n< nodoMax; n++){
+	for(int n= 18; n< nodoMax; n++){
 		srand (time(NULL));	
 		int cant_max_aristas= (n*(n-1))/2;
 		int m;
 		
-		m= (rand() % (cant_max_aristas / 2)) + ((cant_max_aristas/2) + 1); 
+		m= (rand() % (cant_max_aristas / 3)) + ((cant_max_aristas/4) + 1); 
 		//para q de randoms entre m/2 y m, y no toque tanto con 0 aristas
 		
 		cout<< n << " " << m << endl;
