@@ -58,7 +58,7 @@ Y el resultado final, que también es el esperado, es: $\lbrace $3, 2$\rbrace$ q
 				\EndFor
 			\EndFor
 		\EndIf
-		\ForAll{$nodo\_candidato\ in\ nodos\_candidatos(Clique)$}
+		\ForAll{$nodo\_candidato\ in\ nodos\_candidatos(Clique)$)}
 			\State $vecindad\_agregar(Clique+nodo\_candidato)$
 \Comment{Cliques vecinas con un nodo más}
 		\EndFor
