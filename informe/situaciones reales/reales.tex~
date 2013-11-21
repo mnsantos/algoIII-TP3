@@ -1,0 +1,15 @@
+\subsection{Situaciones de la vida real} 
+
+El concepto de "clique" se usa para referirse a un grupo de personas que interactúan con mayor frecuencia entre sí. Por ejemplo representando a un curso de primaria como un grafo, donde cada chico es un nodo y ponemos una arista entre dos nodos si hay suficiente interacción entre ellos (el grado de interacción hay que determinarlo), una clique sería un grupo (subconjunto del total del curso) de chicos en el que todos interactúan con el resto del grupo con mucha frecuencia.
+
+Además de modelar interacciones sociales, el problema de buscar cliques se emplea en áreas como química, genética, bioinformática, comunicación, ingeniería electrónica, entre otras.
+
+A continuación enumeramos algunas situaciones donde encontrar la clique de máxima frontera, puede ser útil.
+
+\begin{itemize}
+ \item Nodos: intersecciones entre calles de una ciudad. Aristas: existe una arista entre dos nodos si es posible transportarse entre ambas intersecciones en menos de una cierta cantidad de tiempo.
+Necesitamos buscar la CMF para realizar una operación (turbia) que es probable que falle y necesitemos una vía de escape, por lo tanto podemos acordar el lugar dentro de la CMF para así poder elegir cualquier ruta para huir de manera más eficiente y alejarse de la zona de búsqueda más rápido.
+
+ \item Nodos: señoras mayores. Aristas: ponemos una arista entre dos nodos si se cuentan chismes entre sí frecuentemente. Queremos esparcir un chisme y que se vuelve verosímil, nos interesa encontrar la CMF para dirigir el chisme a las señoras dentro de la misma, consideramos que un chisme se torna más creíble mientras más gente te lo comente. Es por esto que buscamos maximizar la cantidad de veces que cuenten el chisme y no la cantidad de personas a las que se lo comenten.
+
+\end{itemize}
