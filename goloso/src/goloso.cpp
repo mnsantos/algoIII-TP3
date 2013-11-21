@@ -25,7 +25,7 @@ Problema::Problema(istream& is){
 //muestra los resultados del problema
 */
 void Problema::mostrarResultado(ostream& os){
-	os << tamFrontera << " " << cliqueMaxFrontera.size() <<" "<<endl;
+	os << tamFrontera << " " << cliqueMaxFrontera.size() <<" ";
 	for (int i = 0; i < cliqueMaxFrontera.size(); i++){
 		if (i == cliqueMaxFrontera.size()-1){
 			os << cliqueMaxFrontera[i] + 1 <<endl;

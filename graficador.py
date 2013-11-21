@@ -18,13 +18,13 @@ titulo = str(sys.argv[3]) #titulo del grafico
 fo = open(fo,'r')
 
 while 1:
-  line = fo.readline()
-  line = line.split()
-  if not line: break	
-  cantNodos = float(line[0])
-  x.append(cantNodos)
-  ciclos = float(line[1])
-  y.append(ciclos)
+	line = fo.readline()
+	line = line.split()
+	if not line: break	
+	cantNodos = float(line[0])
+	x.append(cantNodos)
+	ciclos = float(line[1])
+	y.append(ciclos)
 fo.close()
 
 #Graficador

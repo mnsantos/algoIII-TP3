@@ -105,7 +105,7 @@ n = cantidad de nodos en el grafo.
 	\ForAll{$n\ vertice \in\ R$} \comp{n}
 		\State $res$ $\shortleftarrow$ $res \ + \ adyacentes(n)$ \comp{1}
 	\EndFor
-	\State $res \ (tam*(tam-1))$ \comp{1}
+	\State $res \shortleftarrow res \ - \ tam*(tam-1)$ \comp{1}
 	\State return $res$ \comp{1}
 \EndProcedure
 \end{algorithmic}
