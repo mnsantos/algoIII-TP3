@@ -33,15 +33,19 @@ Veremos la complejidad de la heurística golosa siguiendo paso a paso el algorit
  \item En la linea 4, buscar el nodo candidato tiene una complejidad O($n^{3}$).
 \end{itemize}
 
-Luego podemos concluir que la complejidad de la heurística es polinómica. 
+Luego podemos concluir que la complejidad de la heurística es polinómica (más precisamente O($n^{4}$)). 
 
+\begin{center}
+\includegraphics[scale=0.5]{goloso/grafico.jpg} 
+\end{center}
+El gráfico de complejidad fue realizado en base a grafos completos para asegurarnos que el algorítmo no supere la cota de complejidad en casos con muchas aistas y muchos nodos.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Casos nefastos}
 
 Los casos en que esta heurística falla, son aquellos en que el nodo de mayor grado del grafo no se encuentra dentro de la clique que se busca. 
-¿Cuán mala puede ser? Tan mala como uno quiera, basta formar una clique con los grados de cada nodo menor al grado máximo. Como ejemplo ilustrativo, mirar la siguiente imagen.
+¿Cuán mala puede ser? Tan mala como uno quiera, basta formar, por ejemplo, una estrella con el nodo central de grado máximo y una clique de fontera máxima con tamaño menor al grado máximo. Como ejemplo ilustrativo, mirar la siguiente imagen.
 \begin{center}
 \includegraphics[scale=0.5]{goloso/labl.png} 
 \end{center}
