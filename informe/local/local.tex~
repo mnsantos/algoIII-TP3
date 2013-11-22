@@ -96,9 +96,22 @@ Si buscamos un k de forma que se maximize esa cuenta nos daremos cuenta que k=$n
 
 Falta ver cuántas veces itera, es decir, cuando deja de haber cambio. En el peor de los casos, la frontera de mi clique va aumentando de a uno, entonces como mucho puede iterar cantidad de aristas (m) de veces.
 
-Cuenta final= cantidad de iteraciones * (armar\_vecindad + recorrerla) = O(m) * (O($n^4$) + O($n^2$) = O(m*$n^4$)
+Cuenta final= cantidad de iteraciones * (armar\_vecindad + recorrerla) = O(m) * (O($n^4$) + O($n^2$)) = O(m*$n^4$)
+\begin{center}
+\includegraphics[scale=0.8]{Images/complejidad.png} 
+\end{center}
 
 \subsection{Casos nefastos}
+Las instancias para las cuales el algoritmo no proporciona una solución óptima son aquellas en las que se encuentra con un máximo local. Muchos grafos tienen máximo local, no hay sólo una forma o familia. Además depende mucho de la solución por el cuál se empiece a ejecutar el algoritmo, en nuestro caso es un nodo random por ende no se puede afirmar con seguridad que en un grafo particular no va a devolver el óptimo, a menos que se sepa desde que nodo comienzó.
+La solución puede distar del óptimo tanto como se quiera.
+Por ejemplo en el siguiente grafo:
+
+\begin{center}
+\includegraphics[scale=0.5]{Images/ejemploCasoMaloLocal.png} 
+\end{center}
+
+Si empieza por los nodos 1, 4, 5 y 6 no llega a la solución óptima.
+En cambio si empieza por los nodos 2, 3, 7, 8, 9, 10 y 11 si llega.
 
 
 \subsection{Experimentaci\'on}
