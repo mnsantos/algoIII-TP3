@@ -50,11 +50,16 @@ Podemos observar que el algoritmo se encuentra acotado por $n^4$, cota de comple
 \subsection{Casos nefastos}
 
 Los casos en que esta heurística falla, son aquellos en que el nodo de mayor grado del grafo no se encuentra dentro de la clique que se busca o, que a la hora de agrandar la clique buscando el nodo candidato, tome el nodo de mayor grado cuando lo que agrandaba la frontera era uno de menor grado. 
-¿Cuán mala puede ser? Tan mala como uno quiera, basta formar, por ejemplo, una estrella con el nodo central de grado máximo y una clique de fontera máxima con tamaño menor al grado máximo. Como ejemplo ilustrativo, mirar la siguiente imagen:
+¿Cuán mala puede ser? Tan mala como uno quiera, basta formar, por ejemplo, una estrella con el nodo central de grado máximo y una clique de fontera máxima con tamaño menor al grado máximo. Como ejemplos ilustrativos, mirar los siguientes casos:
 
 \begin{figure}[H]
 \centering\includegraphics[width=11 cm]{goloso/labl.png}
 \caption{Caso 1}
+\end{figure}
+
+\begin{figure}[H]
+\centering\includegraphics[width=12 cm]{goloso/goloso2.png}
+\caption{Caso 2}
 \end{figure}
 
 \begin{center}
@@ -62,7 +67,7 @@ Los casos en que esta heurística falla, son aquellos en que el nodo de mayor gr
     \hline
     Caso & Frontera exacto & Frontera Goloso & Clique Exacto & Clique Goloso \\ \hline
     1 & 8 & 6 & $\{8,11\}$ & $\{0\}$ \\ \hline
-    2 &  &  &  & \\ \hline
+    2 & 34 & 19 &\{38,39\}& $\{0\}$ \\ \hline
     3 &  &  &  & \\
 	\hline
     \end{tabular}
