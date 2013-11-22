@@ -13,6 +13,8 @@ El criterio de terminación que elegimos, está ligado al número de aristas del
 Además el criterio de aspiración que empleamos consiste en que si el vecino analizado es mejor que la solución hasta el momento, no importa si forma parte de la lista Tabú o no, se toma como solución. Y cuando todas nuestras posibilidades pertenecen a la lista Tabú, elegimos una de ellas al azar.
 
 \subsection{Pseudoc\'odigo y complejidad}
+Este algoritmo utiliza muchas de las funciones de búsqueda local, no agregamos el pseudocódigo de estas para no ser repetitivos, ya que los cambios son mínimos y son respecto a la lista tabú.
+
 \begin{algorithm}
 	\caption{Tabú Search}\label{tabu}
 	\begin{algorithmic}[1]
