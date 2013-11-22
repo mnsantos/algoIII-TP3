@@ -13,7 +13,7 @@ La recursión se inicia seteando a R y a X como conjuntos vacíos y a P como el 
 		\State cliqueMaxFrontera $\shortleftarrow$ R
 		\State maxFrontera $\shortleftarrow$ front
 	\EndIf
-	\ForAll{$p\ vertice \in\ P$}
+	\ForAll{$v\ vertice \in\ P$}
 		\State findCliques(R $\cup$ $\{v\}$, P $\cap$ N($v$), X $\cap$ N($v$))
 	\EndFor
 	\State P $\backslash$ $\{v\}$
@@ -87,7 +87,7 @@ n = cantidad de nodos en el grafo.
 		\State cliqueMaxFrontera $\shortleftarrow$ R \comp{n}
 		\State maxFrontera $\shortleftarrow$ front \comp{1}
 	\EndIf
-	\ForAll{$p\ vertice \in\ P$}
+	\ForAll{$v\ vertice \in\ P$}
 		\State findCliques(R $\cup$ $\{v\}$, P $\cap$ N($v$), X $\cap$ N($v$)) \Comment{complejidad analizada para la unión e intersección} \comp{n+n^2+n^2}
 	\EndFor
 	\State P $\backslash$ $\{v\}$ \comp{n}
