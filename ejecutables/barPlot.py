@@ -10,7 +10,7 @@ prueba = str(sys.argv[1]) #tests a Probar
 os.system("./exacto < "+prueba+" > exacto.out")
 os.system("./goloso < "+prueba+" > goloso.out")
 os.system("./blocal < "+prueba+" > blocal.out")
-#os.system("./tabu < "+prueba+" > tabu.out") para tabu
+os.system("./tabu < "+prueba+" > tabu.out")
 
 #reading outputs
 y=[]
@@ -44,37 +44,38 @@ while 1:
 fo.close()
 ys.append(y)
 
-#y=[]
-#fo=open("tabu.out",'r')
-#while 1:
-#	line = fo.readline()
-#	line = line.split()
-#	if not line: break	
-#	y.append(float(line[0]))
-#fo.close()
-#ys.append(y)
+y=[]
+fo=open("tabu.out",'r')
+while 1:
+	line = fo.readline()
+	line = line.split()
+	if not line: break	
+	y.append(float(line[0]))
+fo.close()
+ys.append(y)
 
 g=0
 bl=0
-#t=0
+t=0
 
 for i in range(0,len(ys[0])):
 	g=g+ys[1][i]/ys[0][i]
 	bl=bl+ys[2][i]/ys[0][i]
+	t=t+ys[3][i]/ys[0][i]
 
 
 g=g/len(ys[0])
 bl=bl/len(ys[0])
-#t=sum(ys[0])/len(ys[0])
+t=t/len(ys[0])
 
 pe=100
 pg=g*100
 pbl=bl*100
-#pg=(t/e)*100
+pt=t*100
 
 fig = p.figure()
 ax = fig.add_subplot(1,1,1)
-y = [pe, pg, pbl]#, pt]
+y = [pe, pg, pbl, pt]
 N = len(y)
 ind = range(N)
 p.ylim([0,110])
