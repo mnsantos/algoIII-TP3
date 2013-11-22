@@ -102,7 +102,7 @@ Cuenta final= cantidad de iteraciones * (armar\_vecindad + recorrerla) = O(m) * 
 \end{center}
 
 \subsection{Casos nefastos}
-Las instancias para las cuales el algoritmo no proporciona una solución óptima son aquellas en las que se encuentra con un máximo local. Muchos grafos tienen máximo local, no hay sólo una forma o familia. Además depende mucho de la solución por el cuál se empiece a ejecutar el algoritmo, en nuestro caso es un nodo random por ende no se puede afirmar con seguridad que en un grafo particular no va a devolver el óptimo, a menos que se sepa desde que nodo comienzó.
+Las instancias para las cuales el algoritmo no proporciona una solución óptima son aquellas en las que se encuentra con un máximo local. Muchos grafos tienen máximo local, no hay sólo una forma o familia. Además depende mucho de la solución por el cuál se empiece a ejecutar el algoritmo, en nuestro caso es un nodo random por ende no se puede afirmar con seguridad que en un grafo particular no va a devolver el óptimo, a menos que se sepa desde que nodo comenzó.
 La solución puede distar del óptimo tanto como se quiera.
 Por ejemplo en el siguiente grafo:
 
@@ -110,8 +110,8 @@ Por ejemplo en el siguiente grafo:
 \includegraphics[scale=0.5]{Images/ejemploCasoMaloLocal.png} 
 \end{center}
 
-Si empieza por los nodos 1, 4, 5 y 6 no llega a la solución óptima.
-En cambio si empieza por los nodos 2, 3, 7, 8, 9, 10 y 11 si llega.
+Si empieza por los nodos 1, 4, 5 y 6 no llega a la solución óptima, retornando como maxima frontera 4.
+En cambio si empieza por los nodos 2, 3, 7, 8, 9, 10 y 11 si llega, retornando 6.
 
 %\subsection{Experimentaci\'on}
 
