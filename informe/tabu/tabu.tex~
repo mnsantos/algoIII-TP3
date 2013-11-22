@@ -13,7 +13,9 @@ El criterio de terminación que elegimos, está ligado al número de aristas del
 Además el criterio de aspiración que empleamos consiste en que si el vecino analizado es mejor que la solución hasta el momento, no importa si forma parte de la lista Tabú o no, se toma como solución. Y cuando todas nuestras posibilidades pertenecen a la lista Tabú, elegimos una de ellas al azar.
 
 \subsection{Pseudoc\'odigo y complejidad}
-\begin{algorithm}
+%Este algoritmo utiliza muchas de las funciones de búsqueda local, no agregamos el pseudocódigo de estas para no ser repetitivos, ya que los cambios son mínimos y son respecto a la lista tabú.
+
+\begin{algorithm}[H]
 	\caption{Tabú Search}\label{tabu}
 	\begin{algorithmic}[1]
 	\Procedure{Tabu }{$G\ =\ (V,\ E)$}
@@ -43,8 +45,19 @@ Además el criterio de aspiración que empleamos consiste en que si el vecino an
 \end{algorithmic}
 \end{algorithm}
 
+Como la diferencia del tabú search respecto de la búsqueda local radica en el criterio de terminación
+
+En el peor caso de la búsqueda local se cicla m veces, donde m es la cantidad de aristas. Llegado este punto nos encontramos con un máximo local que a su vez es la solución óptima de CMF. Por ende, a partir de este instante, no habrán más cambios ciclando m veces más. Por lo tanto la complejidad total de la heurística será: O($m^2$) * (O($n^4$) + O($n^2$) = O($m^2*n^4$).
+
+Para justificar la complejidad calculada teoricamente utilizaremos el mismo criterio que seguimos con el algoritmo exacto con la única diferencia de que probaremos con grafos más grandes cuya cantidad de nodos va de 1 a 30. A diferencia del algoritmo exacto, la heurísitica presentada puede resolver los casos agregados más rapidamente por ser polinomial.
+
+\begin{figure}[H]
+\centering\includegraphics[width=12 cm]{tabu/complejidad.png}
+\caption{Cantidad de ciclos insumidos en función de la cantidad de nodos en el grafo.}
+\end{figure}
 
 \subsection{Casos nefastos}
+Los casos en que el tabú search falla son los que para llegar al óptimo debe realizar más cantidad de iteraciones sin modificar el CMF actual que la cota puesta en el while. En el peor caso retorna lo mismo que búsqueda local si arrancan por el mismo nodo. Dado que la solución inicial influye en el hallazgo del óptimo, no podemos asegurar para un caso particular que encuentre el óptimo o no porque nuestra solución inicial es un nodo random.
 
 
 %\subsection{Experimentaci\'on}

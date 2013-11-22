@@ -15,9 +15,9 @@ La recursión se inicia seteando a R y a X como conjuntos vacíos y a P como el 
 	\EndIf
 	\ForAll{$v\ vertice \in\ P$}
 		\State findCliques(R $\cup$ $\{v\}$, P $\cap$ N($v$), X $\cap$ N($v$))
+		\State P $\backslash$ $\{v\}$
+		\State X $\cup$ $v$
 	\EndFor
-	\State P $\backslash$ $\{v\}$
-	\State X $\cup$ $v$
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
@@ -89,9 +89,9 @@ n = cantidad de nodos en el grafo.
 	\EndIf
 	\ForAll{$v\ vertice \in\ P$}
 		\State findCliques(R $\cup$ $\{v\}$, P $\cap$ N($v$), X $\cap$ N($v$)) \Comment{complejidad analizada para la unión e intersección} \comp{n+n^2+n^2}
+		\State P $\backslash$ $\{v\}$ \comp{n}
+		\State X $\cup$ $v$ \comp{n}
 	\EndFor
-	\State P $\backslash$ $\{v\}$ \comp{n}
-	\State X $\cup$ $v$ \comp{n}
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
@@ -130,9 +130,8 @@ En definitiva, la complejidad total del algoritmo es: $O(n^2*2^n)$.
 Para justificar la complejidad calculada se creó un test en particular de grafos completos con nodos que van de 1 a 20. Elegimos grafos completos porque se trata de grafos con $2^n$ cliques en donde realmente se pone a prueba la eficiencia del algoritmo y en donde se puede observar que efectivamente se encuentra acotado por la cota de complejidad teórica hallada. Los resultados obtenidos fueron:
 
 \begin{figure}[H]
-\centering\includegraphics[width=11 cm]{exacto/imgs/complejidad.jpg}
+\centering\includegraphics[width=12 cm]{exacto/imgs/complejidad.jpg}
 \caption{Cantidad de ciclos insumidos en función de la cantidad de nodos en el grafo.}
 \end{figure}
 
 Podemos observar que el algoritmo se encuentra acotado por $2^n*n^2$ como era de esperarse.
-

@@ -143,8 +143,6 @@
 \section{Algoritmo Busqueda Local}
 \input{local/local.tex}
 
-\newpage
-
 \section{Algoritmo Búsqueda Tabú}
 \input{tabu/tabu.tex}
 

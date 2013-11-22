@@ -38,7 +38,7 @@ Luego podemos concluir que la complejidad de la heurística es polinómica (más
 Para justificar la complejidad calculada teoricamente utilizaremos el mismo criterio que seguimos con el algoritmo exacto con la única diferencia de que probaremos con grafos más grandes cuya cantidad de nodos va de 1 a 100. A diferencia del algoritmo exacto, la heurísitica presentada puede resolver los casos agregados más rapidamente por ser polinomial.
 
 \begin{figure}[H]
-\centering\includegraphics[width=13 cm]{goloso/grafico.jpg}
+\centering\includegraphics[width=11 cm]{goloso/grafico.jpg}
 \caption{Cantidad de ciclos insumidos en función de la cantidad de nodos en el grafo.}
 \end{figure}
 
@@ -53,7 +53,7 @@ Los casos en que esta heurística falla, son aquellos en que el nodo de mayor gr
 ¿Cuán mala puede ser? Tan mala como uno quiera, basta formar, por ejemplo, una estrella con el nodo central de grado máximo y una clique de fontera máxima con tamaño menor al grado máximo. Como ejemplos ilustrativos, mirar los siguientes casos:
 
 \begin{figure}[H]
-\centering\includegraphics[width=11 cm]{goloso/labl.png}
+\centering\includegraphics[width=12 cm]{goloso/labl.png}
 \caption{Caso 1}
 \end{figure}
 
