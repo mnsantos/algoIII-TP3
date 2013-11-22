@@ -1,0 +1,17 @@
+En esta sección del informe realizaremos experimentos con todos los algoritmos implementados evaluando tanto la complejidad como la eficacia de las heurísticas implementadas.
+
+Para lo primero graficamos los ciclos insumidos en función de la cantidad de nodos para varios grafos generados aleatoriamente. Los resultados fueron los siguientes:
+
+\begin{figure}[H]
+\centering\includegraphics[width=11 cm]{experimentacion/complejidad.jpg}
+\caption{Cantidad de ciclos insumidos en función de la cantidad de nodos en el grafo.}
+\end{figure}
+
+Para lo segundo decidimos utilizar un conjunto de pruebas conformado por tests de la cátedra sumándole varias instancias de casos random con grafos que van de 1 a 120 nodos. Los resultados obtenidos para cada test fueron comparados con los devueltos por el algoritmo exacto de la siguiente manera:
+
+\frac{$res\_heurística$}{$res\_exacto$}
+
+
+
+
+

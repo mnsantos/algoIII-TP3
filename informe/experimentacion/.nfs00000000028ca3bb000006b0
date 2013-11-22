@@ -19,7 +19,7 @@ Considerando que la efectividad del algoritmo exacto es 100$\%$, la efectividad 
 \caption{Cantidad de ciclos insumidos en función de la cantidad de nodos en el grafo.}
 \end{figure}
 
-Como puede observarse, la efectividad de las heurísticas se encuentra por arriba del 90\%. La heurística que mejor funcionó fue la Tabú, seguido por la Búsqueda Local y la golosa. Era de esperar que el Tabú search fuera mejor que la búsqueda local ya que el primer algoritmo es una modificación del segundo con la ventaja de que puede salir de los óptimos locales. 
+Como puede observarse, la efectividad de las heurísticas se encuentra por arriba del 90$%$. 
 
 
 
