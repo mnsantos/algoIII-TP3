@@ -58,7 +58,7 @@ Y el resultado final, que también es el esperado, es: $\lbrace $3, 2$\rbrace$ q
 				\EndFor
 			\EndFor
 		\EndIf
-		\ForAll{$nodo\_candidato\ in\ nodos\_candidatos(Clique)$)}
+		\ForAll{$nodo\_candidato\ in\ nodos\_candidatos(Clique)$}
 			\State $vecindad\_agregar(Clique+nodo\_candidato)$
 \Comment{Cliques vecinas con un nodo más}
 		\EndFor
@@ -67,6 +67,36 @@ Y el resultado final, que también es el esperado, es: $\lbrace $3, 2$\rbrace$ q
 \end{algorithm}
 
 nodos\_candidatos(Clique): retorna un vector con los nodos de G que se pueden agregar a la Clique de forma que esta siga siendo un grafo completo.
+
+\textbf{Complejidad: }
+
+La función nodos\_candidatos debe recorrer los nodos de la clique y calcular la intersección entre todos los adyacentes de estos. Por lo tanto una cota holgada para esta función sería O($n^3$). 
+Holgada porque si hay n nodos en la clique, no hay más nodos para agregar, por lo tanto la intersección entre los dos primeros sería vacío y no tiene porque continuar.
+
+Luego, la función armar\_vecindad recorre los nodos de la clique (linea 15), llama a nodos\_candidatos dos veces (lineas 17 y 22) y los recorre una vez (linea 22). 
+La cantidad de nodos de la clique es a lo sumo n y los nodos candidatos también. Entonces su complejidad es: O(n)*O(n\^{3}) + O(n) = O($n^4$).
+
+Por último la función local, llama a armar\_vecindad (linea 4) y recorre la vecindad (linea 5) una vez por iteración, mientras haya cambio.
+
+El tamaño de la vecindad está dado por la siguiente cuenta, en una clique de k nodos:
+
+\begin{center}
+\begin{tabular}{  c  c  }
+(vecinos que tienen un nodo menos) & k elecciones
+\\ + & + \\ 
+(vecinos que tienen un nodo intercambiado) & k*(n-k) elecciones
+\\ + & + \\ 
+(vecinos que tienen un nodo más) & (n-k) elecciones
+\\ = & = \\
+(cantidad de vecinos) & k + k*(n-k) + (n-k)
+\end{tabular}
+\end{center}
+
+Si buscamos un k de forma que se maximize esa cuenta nos daremos cuenta que k=$n/2$ es el que sirve. Dejando así como máximo tamaño de la vecindad $(n^2/4) +n$. Es decir, recorrer la vecindad es O($n^2$).
+
+Falta ver cuántas veces itera, es decir, cuando deja de haber cambio. En el peor de los casos, la frontera de mi clique va aumentando de a uno, entonces como mucho puede iterar cantidad de aristas (m) de veces.
+
+Cuenta final= cantidad de iteraciones * (armar\_vecindad + recorrerla) = O(m) * (O($n^4$) + O($n^2$) = O(m*$n^4$)
 
 \subsection{Casos nefastos}
 
