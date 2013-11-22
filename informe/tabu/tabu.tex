@@ -47,6 +47,7 @@ Este algoritmo utiliza muchas de las funciones de búsqueda local, no agregamos 
 
 
 \subsection{Casos nefastos}
+Los casos en que el tabú search falla son los que para llegar al óptimo debe realizar más cantidad de iteraciones sin modificar el CMF actual que la cota puesta en el while. En el peor caso retorna lo mismo que búsqueda local si arrancan por el mismo nodo. Dado que la solución inicial influye en el hallazgo del óptimo, no podemos asegurar para un caso particular que encuentre el óptimo o no porque nuestra solución inicial es un nodo random.
 
 
 %\subsection{Experimentaci\'on}
