@@ -10,12 +10,41 @@ Por medio de un esquema podemos mostrar el funcionamiento de la metaheurística:
 \end{center}
 
 \subsection{Pseudoc\'odigo y complejidad}
+\begin{algorithm}
+	\caption{Tabú Search}\label{tabu}
+	\begin{algorithmic}[1]
+	\Procedure{Tabu }{$G\ =\ (V,\ E)$}
+		\State $CMF=\ random(nodos)$	\Comment{elige un nodo al azar}
+		\State $Clique=\ CMF$
+		\State $lista_tabu=\ vacio$
+		\While{$nro\_iteraciones\ \leq\ |E|$}
+			\State $armar\_vecindad(Clique)$
+			\ForAll{$vecino\ in\ vecindad$}
+				\If{$frontera(vecino)\ >\ frontera(CMF)$} \Comment{si es mejor que la mejor solución hasta el momento lo cambia sin importar si es tabú}
+					\State $CMF=\ vecino$
+					\State $Clique=\ CMF$ 
+					\State $Actualizar\_lista\_tabu$
+				\EndIf
+			\EndFor
+		\EndWhile
+
+		\If{$CMF\ no\ cambio$}
+			\If{$\exists \ vecino\_no\_tabu$}
+				\State $Clique=\ vecino\_no\_tabu$
+				\State $Actualizar\_lista\_tabu$
+			\Else
+				\State $Clique=\ algun\_vecino$
+			\EndIf
+		\EndIf
+	\EndProcedure
+\end{algorithmic}
+\end{algorithm}
 
 
 \subsection{Casos nefastos}
 
 
-\subsection{Experimentaci\'on}
+%\subsection{Experimentaci\'on}
 
 
 
