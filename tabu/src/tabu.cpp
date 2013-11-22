@@ -163,6 +163,7 @@ void Problema::resolver(){
 	
 	vector<Clique> vecindad;
 	Clique clique;
+	clique.nodos= cliqueMaxFrontera;
 	
 	int cond=0;
 	while(cond<= g.cantAristas){
@@ -176,10 +177,13 @@ void Problema::resolver(){
 		//~ }
 		bool hay_cambio= false;
 		
+		//~ cout<< "lala" << endl;
+		
 		Clique ultimo_no_tabu;
 		
 		for(int i=0; i< vecindad.size(); i++){
 			int frontera_vecino= frontera(vecindad[i].nodos); //para no calcularlo dos veces
+			
 			if(frontera_vecino > maxFrontera){
 				cliqueMaxFrontera= vecindad[i].nodos;
 				if(clique.nodos.size() <= vecindad[i].nodos.size()){
@@ -210,6 +214,10 @@ void Problema::resolver(){
 				}
 				clique= vecindad[pos_rand];
 			}
+			cond++;
+		}
+		else{
+			cond=0;
 		}
 		
 	}
