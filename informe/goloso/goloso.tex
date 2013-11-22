@@ -35,17 +35,36 @@ Veremos la complejidad de la heurística golosa siguiendo paso a paso el algorit
 
 Luego podemos concluir que la complejidad de la heurística es polinómica (más precisamente O($n^{4}$)). 
 
-\begin{center}
-\includegraphics[scale=0.5]{goloso/grafico.jpg} 
-\end{center}
-El gráfico de complejidad fue realizado en base a grafos completos para asegurarnos que el algorítmo no supere la cota de complejidad en casos con muchas aistas y muchos nodos.
+Para justificar la complejidad calculada teoricamente utilizaremos el mismo criterio que seguimos con el algoritmo exacto con la única diferencia de que probaremos con grafos más grandes cuya cantidad de nodos va de 1 a 100. A diferencia del algoritmo exacto, la heurísitica presentada puede resolver los casos agregados más rapidamente por ser polinomial.
+
+\begin{figure}[H]
+\centering\includegraphics[width=11 cm]{goloso/grafico.jpg}
+\caption{Cantidad de ciclos insumidos en función de la cantidad de nodos en el grafo.}
+\end{figure}
+
+Podemos observar que el algoritmo se encuentra acotado por $n^4$, cota de complejidad calculada teoricamente.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Casos nefastos}
 
 Los casos en que esta heurística falla, son aquellos en que el nodo de mayor grado del grafo no se encuentra dentro de la clique que se busca. 
-¿Cuán mala puede ser? Tan mala como uno quiera, basta formar, por ejemplo, una estrella con el nodo central de grado máximo y una clique de fontera máxima con tamaño menor al grado máximo. Como ejemplo ilustrativo, mirar la siguiente imagen.
+¿Cuán mala puede ser? Tan mala como uno quiera, basta formar, por ejemplo, una estrella con el nodo central de grado máximo y una clique de fontera máxima con tamaño menor al grado máximo. Como ejemplo ilustrativo, mirar la siguiente imagen:
+
+\begin{figure}[H]
+\centering\includegraphics[width=11 cm]{goloso/labl.png}
+\caption{Caso 1}
+\end{figure}
+
 \begin{center}
-\includegraphics[scale=0.5]{goloso/labl.png} 
+    \begin{tabular}{ | l | l | l | l | l | p{5cm} |}
+    \hline
+    Caso & Frontera exacto & Frontera Goloso & Clique Exacto & Clique Goloso \\ \hline
+    1 & 8 & 6 & $\{8,11\}$ & $\{0\}$ \\ \hline
+    2 &  &  &  & \\ \hline
+    3 &  &  &  & \\
+	\hline
+    \end{tabular}
+\captionof{table}{Frontera devuelta para algoritmo exacto y goloso}
 \end{center}

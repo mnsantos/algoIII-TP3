@@ -33,13 +33,14 @@ plt.figure(0)
 
 fig, ax = plt.subplots()
 plt.title(titulo)
+plt.xlim([12,20])
 plt.xlabel("cantNodos")
 plt.ylabel("Miles de ciclos")
 ax.plot(x,y, label="Algoritmo")
-#z = [ i * i * 2**i for i in x ] #funcion para graficar junto a la del algoritmo
-z = [0.001 * i * i * i * i for i in x ] #funcion para graficar junto a la del algoritmo
+z = [0.05 * i * i * 2**i for i in x ] #funcion para graficar junto a la del algoritmo
+#z = [0.001 * i * i * i * i for i in x ] #funcion para graficar junto a la del algoritmo
 #ax.plot(x,z,label="n^2 * 2^n")
-ax.plot(x,z,label="n^4")
+ax.plot(x,z,label="2^n * n^2")
 
 # Now add the legend with some customizations.
 legend = ax.legend(loc='upper center', shadow=True)

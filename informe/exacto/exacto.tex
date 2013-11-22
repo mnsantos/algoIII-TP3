@@ -1,6 +1,6 @@
 \subsection{Explicación del algoritmo implementado}
 
-Para resolver el problema de CMF utilizaremos el algoritmo de Bron-Kerbosch con algunas modificaciones. Dado un grafo G, el algoritmo de Bron-Kerbosch busca todas las cliques maximales de G utilizando una técnica de backtracking recursivo. Más generalmente, dados tres conjuntos R, P y X, R forma cliques recolectando nodos de P y X. P le brinda posibles nodos candidatos a R para armar cliques mientras que el conjunto X se conforma de vértices que ya fueron utilizados previamente para la extensión de la clique R y que por lo tanto son ignorados para formar nuevas cliques. Para cada nodo $v$ en P se hace una llamada recursiva en donde $v$ es agregado a R y, P y X se restringen a todos los nodos adyacentes a $v$. Luego, se mueve el nodo $v$ de P al conjunto X y se continúa con un nuevo vértice de P para formar nuevas cliques.
+Para resolver el problema de CMF utilizaremos el algoritmo de Bron-Kerbosch con algunas modificaciones. Dado un grafo G, el algoritmo de Bron-Kerbosch busca todas las cliques maximales de G utilizando una técnica de backtracking recursivo. Más generalmente, dados tres conjuntos R, P y X, R forma cliques recolectando nodos de P y X. P le brinda nodos candidatos a R para formar nuevas cliques mientras que el conjunto X se conforma de vértices que ya fueron utilizados previamente en la ejecución del algoritmo para la extensión de la clique R y que por lo tanto son ignorados para formar más cliques. Para cada nodo $v$ en P se hace una llamada recursiva en donde $v$ se agrega a R y P y X se restringen a todos los nodos adyacentes a $v$. Luego, se mueve $v$ de P al conjunto X y se continúa con un nuevo vértice de P para formar nuevas cliques.
 
 La recursión se inicia seteando a R y a X como conjuntos vacíos y a P como el conjunto conformado por todos los nodos del grafo. Por cada llamado recursivo, el algoritmo chequea si los conjuntos P y X se encuentran vacíos y, en caso de estarlos, reporta a R como clique maximal. Sin embargo, nuestro algoritmo no realiza el último paso descripto ya que el objetivo es encontrar la clique de máxima frontera. En vez de verificar si los conjuntos P y X están vacíos, calcula el cardinal de la frontera de la clique formada en R y, en caso de ser mayor que la encontrada hasta ese momento de ejecución, la guarda. A continuación un pseudocódigo del algoritmo:
 
@@ -127,5 +127,12 @@ En definitiva, la complejidad total del algoritmo es: $O(n^2*2^n)$.
 
 \subsubsection{Performance del Algoritmo}
 
+Para justificar la complejidad calculada se creó un test en particular de grafos completos con nodos que van de 1 a 20. Elegimos grafos completos porque se trata de grafos con $2^n$ cliques en donde realmente se pone a prueba la eficiencia del algoritmo y en donde se puede observar que efectivamente se encuentra acotado por la cota de complejidad teórica hallada. Los resultados obtenidos fueron:
 
+\begin{figure}[H]
+\centering\includegraphics[width=11 cm]{exacto/imgs/complejidad.jpg}
+\caption{Cantidad de ciclos insumidos en función de la cantidad de nodos en el grafo.}
+\end{figure}
+
+Podemos observar que el algoritmo se encuentra acotado por $2^n*n^2$ como era de esperarse.
 
