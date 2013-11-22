@@ -129,7 +129,7 @@ vector<vector<int> > Problema::armar_vecindad (vector<int> clique){
 
 
 void Problema::resolver(){
-	srand (time(NULL)); //random seed
+	//srand (time(NULL)); //random seed
 	int nodo= rand() % g.cantNodos;
 	cliqueMaxFrontera.push_back(nodo);
 	maxFrontera= g.nodos[nodo].adyacentes.size();
